@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Manies Barber Shop — Mowbray, Cape Town</title>
+<meta name="description" content="Manies Barber Shop, 39 Durban Rd, Mowbray. Cuts, fades, beards & hot-towel shaves. Walk in, sit down, look sharp. Book on WhatsApp." />
+<meta name="theme-color" content="#c12a26" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cream:#f4ead4;
+  --paper:#f7eedb;
+  --red:#c12a26;
+  --red-deep:#8c1f1c;
+  --blue:#1c3a8a;
+  --blue-deep:#142769;
+  --ink:#181410;
+  --gold:#f0c674;
+
+  --display:"Anton","Bebas Neue",Impact,sans-serif;
+  --serif:"Fraunces",Georgia,serif;
+  --body:"Space Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+
+  --content-max:1280px;
+  --gutter:18px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:var(--body)}
+body{overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* paper grain — subtle multiply over the whole page */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:50;
+  background-image:radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.4px);
+  background-size:3px 3px;mix-blend-mode:multiply;opacity:.45;
+}
+
+/* ─────── Barber-pole stripe band ─────── */
+.stripe{
+  height:14px;width:100%;
+  background-image:repeating-linear-gradient(45deg,
+    var(--red) 0 10px,
+    #fff 10px 18px,
+    var(--blue) 18px 28px,
+    #fff 28px 36px);
+}
+.stripe--h{
+  background-image:repeating-linear-gradient(90deg,
+    var(--red) 0 10px,
+    #fff 10px 18px,
+    var(--blue) 18px 28px,
+    #fff 28px 36px);
+}
+.stripe--soft{
+  background-image:repeating-linear-gradient(45deg,
+    var(--red) 0 10px,
+    #fff8e8 10px 18px,
+    var(--blue) 18px 28px,
+    #fff8e8 28px 36px);
+}
+.stripe--thick{height:16px}
+.stripe--thin{height:10px}
+
+/* ─────── Header ─────── */
+.topbar{
+  position:relative;z-index:5;
+  border-bottom:1.5px solid var(--ink);
+  background:var(--cream);
+}
+.topbar__inner{
+  max-width:var(--content-max);margin-inline:auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px var(--gutter);
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+}
+.topbar__wordmark{
+  font-family:var(--display);font-size:22px;letter-spacing:2px;
+}
+
+/* ─────── Layout containers ─────── */
+.wrap{max-width:var(--content-max);margin-inline:auto}
+main{display:block;position:relative;z-index:1}
+
+/* ─────── Hero ─────── */
+.hero{padding:22px var(--gutter) 18px;max-width:var(--content-max);margin-inline:auto}
+.hero__kicker{
+  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--red-deep);
+}
+.hero__title{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(76px, 30vw, 132px);line-height:.82;letter-spacing:-1px;
+  margin:4px 0 0;color:var(--ink);
+}
+.hero__title .shadowed{
+  color:var(--red);-webkit-text-stroke:1.5px var(--ink);
+  text-shadow:4px 4px 0 var(--blue);
+  display:inline-block;
+}
+
+.tri-rule{display:flex;gap:0;margin-top:14px;height:6px}
+.tri-rule span{flex:1}
+.tri-rule .a{background:var(--ink)}
+.tri-rule .b{background:var(--red)}
+.tri-rule .c{background:var(--blue)}
+
+.hero__mid{
+  display:grid;grid-template-columns:1fr auto;gap:14px;margin-top:16px;align-items:center;
+}
+.hero__lede{margin:0;font-size:14px;line-height:1.4}
+.hero__lede b{font-weight:700}
+
+/* StarBurst */
+.starburst{
+  --burst-color:var(--red);
+  width:92px;height:92px;display:inline-flex;align-items:center;justify-content:center;
+  transform:rotate(-10deg);
+  background:conic-gradient(
+    var(--burst-color) 0 11.25deg, transparent 11.25deg 22.5deg,
+    var(--burst-color) 22.5deg 33.75deg, transparent 33.75deg 45deg,
+    var(--burst-color) 45deg 56.25deg, transparent 56.25deg 67.5deg,
+    var(--burst-color) 67.5deg 78.75deg, transparent 78.75deg 90deg,
+    var(--burst-color) 90deg 101.25deg, transparent 101.25deg 112.5deg,
+    var(--burst-color) 112.5deg 123.75deg, transparent 123.75deg 135deg,
+    var(--burst-color) 135deg 146.25deg, transparent 146.25deg 157.5deg,
+    var(--burst-color) 157.5deg 168.75deg, transparent 168.75deg 180deg,
+    var(--burst-color) 180deg 191.25deg, transparent 191.25deg 202.5deg,
+    var(--burst-color) 202.5deg 213.75deg, transparent 213.75deg 225deg,
+    var(--burst-color) 225deg 236.25deg, transparent 236.25deg 247.5deg,
+    var(--burst-color) 247.5deg 258.75deg, transparent 258.75deg 270deg,
+    var(--burst-color) 270deg 281.25deg, transparent 281.25deg 292.5deg,
+    var(--burst-color) 292.5deg 303.75deg, transparent 303.75deg 315deg,
+    var(--burst-color) 315deg 326.25deg, transparent 326.25deg 337.5deg,
+    var(--burst-color) 337.5deg 348.75deg, transparent 348.75deg 360deg);
+}
+.starburst__inner{
+  width:72%;height:72%;border-radius:50%;background:var(--burst-color);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  color:var(--cream);font-family:var(--display);font-size:17px;line-height:1;
+  padding:8px;transform:rotate(10deg);
+}
+.starburst--tilt{transform:rotate(8deg)}
+
+/* Hero photo card */
+.photocard{
+  position:relative;margin-top:18px;
+  border:2px solid var(--ink);padding:6px;background:#fff;
+  box-shadow:8px 8px 0 var(--ink);
+}
+.photocard__inner{position:relative;overflow:hidden;background:var(--ink);height:340px}
+.photocard__inner img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.15) brightness(.95);
+}
+.photocard__inner::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle at center, rgba(255,255,255,.4) 1px, transparent 1.6px);
+  background-size:7px 7px;mix-blend-mode:screen;opacity:.5;
+}
+.photocard__corner-stripe{
+  position:absolute;top:6px;right:6px;width:80px;height:14px;
+  background-image:repeating-linear-gradient(70deg,
+    var(--red) 0 10px,
+    #fff 10px 18px,
+    var(--blue) 18px 28px,
+    #fff 28px 36px);
+  z-index:2;
+}
+.photocard__label{
+  position:absolute;bottom:14px;left:18px;
+  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  color:rgba(255,255,255,.7);text-transform:uppercase;z-index:2;
+}
+.photocard__stamp{
+  position:absolute;top:-12px;right:-8px;z-index:3;
+  background:var(--blue);color:var(--cream);
+  font-family:var(--display);font-size:14px;letter-spacing:2px;
+  padding:6px 10px;border:2px solid var(--ink);
+  transform:rotate(6deg);
+}
+
+/* CTAs */
+.cta-row{
+  margin-top:24px;display:grid;grid-template-columns:1.4fr 1fr;gap:10px;
+}
+.btn{
+  font-family:var(--display);font-size:22px;letter-spacing:2px;
+  border:2px solid var(--ink);padding:16px 14px;text-decoration:none;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  min-height:56px;
+  transition:transform .12s ease, box-shadow .12s ease;
+  text-transform:uppercase;
+}
+.btn--red{background:var(--red);color:var(--cream);box-shadow:4px 4px 0 var(--ink)}
+.btn--cream{background:var(--cream);color:var(--ink);box-shadow:4px 4px 0 var(--blue);justify-content:center}
+.btn--ghost{background:#fff;color:var(--ink);box-shadow:5px 5px 0 var(--ink);justify-content:center}
+.btn:hover{transform:translate(-2px,-2px)}
+.btn--red:hover{box-shadow:6px 6px 0 var(--ink)}
+.btn--cream:hover{box-shadow:6px 6px 0 var(--blue)}
+.btn--ghost:hover{box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink) !important}
+
+/* ─────── Marquee ─────── */
+.marquee{
+  margin-top:6px;background:var(--ink);color:var(--cream);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  overflow:hidden;padding:10px 0;
+}
+.marquee__track{
+  display:flex;gap:22px;white-space:nowrap;
+  font-family:var(--display);font-size:22px;letter-spacing:3px;
+  animation:scroll-x 28s linear infinite;
+  width:max-content;
+}
+.marquee__track > span{padding-right:22px}
+@keyframes scroll-x{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ─────── Section header ─────── */
+.section{padding:36px var(--gutter) 0;position:relative;z-index:1;max-width:var(--content-max);margin-inline:auto}
+.section__hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section__no{
+  font-family:var(--display);font-size:14px;letter-spacing:2px;
+  background:var(--red);color:var(--cream);
+  padding:4px 10px;border:1.5px solid var(--ink);
+}
+.section--blue .section__no{background:var(--blue)}
+.section__hd .ln{flex:1;height:2px;background:var(--ink)}
+.section__title{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(54px, 14vw, 70px);line-height:.82;letter-spacing:0;
+  margin:0 0 18px;text-transform:uppercase;
+}
+
+/* ─────── Menu (services) ─────── */
+.menu{
+  background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+}
+.menu__head{
+  display:flex;justify-content:space-between;
+  background:var(--blue);color:var(--cream);
+  padding:8px 14px;font-family:var(--display);font-size:14px;letter-spacing:2px;
+}
+.menu__row{
+  display:grid;grid-template-columns:1fr auto;
+  padding:12px 14px;align-items:baseline;gap:10px;
+}
+.menu__row + .menu__row{border-top:1px dashed var(--ink)}
+.menu__name{font-family:var(--display);font-size:22px;line-height:1;letter-spacing:1px;text-transform:uppercase}
+.menu__note{font-size:11px;color:var(--red-deep);margin-top:4px;font-family:var(--mono);letter-spacing:.5px}
+.menu__price{font-family:var(--display);font-size:22px;color:var(--red);letter-spacing:1px;text-align:right}
+.menu__time{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--ink);text-align:right}
+
+.menu__footer{
+  margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  text-transform:uppercase;text-align:right;
+}
+
+/* ─────── Team ─────── */
+.team-hero{
+  position:relative;background:var(--ink);color:var(--cream);
+  border:2px solid var(--ink);padding:14px;
+  box-shadow:6px 6px 0 var(--red);
+}
+.team-hero__meta{
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;
+}
+.team-hero__name{
+  font-family:var(--display);font-size:clamp(72px, 22vw, 96px);
+  letter-spacing:1px;line-height:.85;margin:6px 0 0;
+}
+.team-hero__quote{
+  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold);
+  margin-top:8px;
+}
+.team-hero__photo{
+  margin-top:14px;position:relative;overflow:hidden;height:220px;background:#000;
+}
+.team-hero__photo img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.15);
+}
+.team-hero__photo::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at center, rgba(255,255,255,.4) 1px, transparent 1.6px);
+  background-size:7px 7px;mix-blend-mode:screen;opacity:.5;
+}
+.team-hero__photo::after{
+  content:"HAMZA · 12 YRS";position:absolute;bottom:10px;left:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  color:rgba(255,255,255,.7);
+}
+.team-hero__stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+}
+.team-hero__stats .lbl{opacity:.5}
+.team-hero__stats .num{font-family:var(--display);font-size:22px;letter-spacing:1px}
+
+.team-others{
+  margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.team-card{
+  border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);
+}
+.team-card__photo{
+  position:relative;height:130px;background:var(--ink);overflow:hidden;
+}
+.team-card__photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15)}
+.team-card__photo::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at center, rgba(255,255,255,.4) 1px, transparent 1.6px);
+  background-size:7px 7px;mix-blend-mode:screen;opacity:.5;
+}
+.team-card__body{padding:10px 12px}
+.team-card__name{font-family:var(--display);font-size:26px;line-height:1;letter-spacing:1px}
+.team-card__role{
+  font-family:var(--mono);font-size:9px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--red-deep);margin-top:4px;
+}
+
+/* ─────── Reviews — newspaper ─────── */
+.quote-card{
+  position:relative;background:#fff;border:2px solid var(--ink);
+  padding:24px 18px 18px;box-shadow:6px 6px 0 var(--blue);
+}
+.quote-card__mark{
+  position:absolute;top:-22px;left:14px;
+  font-family:var(--display);font-size:100px;color:var(--red);line-height:1;
+}
+.quote-card__text{
+  margin:8px 0 0;font-family:var(--serif);font-style:italic;
+  font-size:clamp(22px, 6.5vw, 28px);line-height:1.15;letter-spacing:-.5px;
+}
+.quote-card__attr{
+  margin-top:14px;display:flex;justify-content:space-between;gap:10px;
+  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+}
+
+.clips{margin-top:16px;display:grid;gap:10px}
+.clip{
+  background:#fff;border:1.5px solid var(--ink);padding:12px 14px;
+}
+.clip:nth-child(odd){background:var(--cream);transform:rotate(.6deg)}
+.clip:nth-child(even){transform:rotate(-.4deg)}
+.clip__hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.clip__author{font-family:var(--display);font-size:18px;letter-spacing:1px;text-transform:uppercase}
+.clip__stars{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--red-deep)}
+.clip__text{margin:6px 0 0;font-size:13px;line-height:1.4}
+
+.reviews-tally{
+  margin-top:14px;text-align:center;
+  font-family:var(--display);font-size:18px;letter-spacing:3px;
+}
+.reviews-tally .accent{color:var(--red)}
+
+/* ─────── Location ─────── */
+.loc-card{
+  border:2px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--ink);
+  overflow:hidden;
+}
+.map{
+  position:relative;height:240px;background:var(--cream);
+  border-bottom:2px solid var(--ink);
+}
+.map iframe{
+  display:block;width:100%;height:100%;border:0;
+  filter:grayscale(.4) contrast(1.05);
+}
+.loc-body{padding:14px 14px 18px}
+.loc-addr{font-family:var(--display);font-size:34px;letter-spacing:1px;line-height:1}
+.loc-meta{font-family:var(--mono);font-size:11px;letter-spacing:2px;margin-top:4px;text-transform:uppercase}
+.hours{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hours > div{border:1px solid var(--ink);padding:8px}
+.hours .k{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.hours .v{font-family:var(--display);font-size:18px;letter-spacing:1px;margin-top:2px}
+
+/* ─────── Final CTA ─────── */
+.final{margin-top:32px}
+.final__body{
+  background:var(--red);color:var(--cream);
+  padding:32px var(--gutter) 14px;text-align:center;
+}
+.final__kicker{font-family:var(--serif);font-style:italic;font-size:18px}
+.final__title{
+  font-family:var(--display);font-size:clamp(64px, 22vw, 110px);
+  line-height:.85;letter-spacing:1px;margin:4px 0 18px;
+}
+.final__phone{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:1.5px}
+.final .btn--ghost{display:block;max-width:560px;margin:4px auto 0}
+
+.footer{
+  background:var(--ink);color:var(--cream);
+  padding:14px var(--gutter);
+  display:flex;justify-content:space-between;gap:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+}
+
+/* ───────────────────────────────────────────
+   Tablet (≥ 720px) — wider column
+   ─────────────────────────────────────────── */
+@media (min-width: 720px){
+  :root{--gutter:32px}
+
+  .topbar__wordmark{font-size:28px;letter-spacing:4px}
+
+  .hero__title{font-size:clamp(120px, 18vw, 180px)}
+  .hero__lede{font-size:16px;max-width:480px}
+  .starburst{width:120px;height:120px}
+  .starburst__inner{font-size:22px}
+  .photocard__inner{height:460px}
+
+  .section{padding:60px var(--gutter) 0}
+  .section__title{font-size:clamp(72px, 11vw, 96px)}
+
+  .menu__name{font-size:28px}
+  .menu__price{font-size:28px}
+  .menu__row{padding:16px 18px}
+
+  .team-others{gap:16px}
+  .team-card__photo{height:180px}
+  .team-card__name{font-size:32px}
+
+  .clips{grid-template-columns:1fr 1fr}
+
+  .map{height:300px}
+
+  .final__body{padding:56px var(--gutter) 24px}
+}
+
+/* ───────────────────────────────────────────
+   Desktop (≥ 1024px) — split layouts
+   ─────────────────────────────────────────── */
+@media (min-width: 1024px){
+  :root{--gutter:48px}
+
+  .topbar__inner{padding:14px var(--gutter)}
+  .topbar__wordmark{font-size:32px;letter-spacing:6px}
+
+  /* HERO: two-column grid */
+  .hero{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    grid-template-areas:
+      "kicker  photo"
+      "title   photo"
+      "rule    photo"
+      "lede    photo"
+      "cta     photo";
+    column-gap:48px;align-items:start;
+    padding:56px var(--gutter) 56px;
+  }
+  .hero__kicker{grid-area:kicker;font-size:20px}
+  .hero__title{grid-area:title;font-size:clamp(140px, 12vw, 220px);margin-top:8px}
+  .tri-rule{grid-area:rule}
+  .hero__mid{grid-area:lede;grid-template-columns:1fr auto;max-width:560px}
+  .photocard{grid-area:photo;margin-top:0;align-self:stretch}
+  .photocard__inner{height:100%;min-height:560px}
+  .cta-row{grid-area:cta;max-width:560px}
+
+  /* MENU: 2-column grid */
+  .menu{display:grid;grid-template-columns:1fr 1fr;column-gap:0}
+  .menu__head{grid-column:1 / -1}
+  .menu__row{border-top:none}
+  .menu__row + .menu__row{border-top:none}
+  .menu__row:nth-child(n+4){border-top:1px dashed var(--ink)}
+  .menu__row:nth-child(even){border-left:1px dashed var(--ink)}
+  .menu__row:last-child{grid-column:1 / -1;border-left:none;border-top:1px dashed var(--ink);background:var(--cream)}
+
+  /* TEAM: hero left, others stacked right */
+  .team-grid{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start;
+  }
+  .team-hero__photo{height:380px}
+  .team-others{
+    margin-top:0;grid-template-columns:1fr;gap:14px;
+  }
+  .team-card__photo{height:200px}
+
+  /* REVIEWS: quote left wide, clips right */
+  .reviews-grid{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start;
+  }
+  .clips{margin-top:0;grid-template-columns:1fr;gap:12px}
+
+  /* LOCATION + final CTA share desktop layout */
+  .loc-card{display:grid;grid-template-columns:1.2fr 1fr}
+  .map{height:auto;min-height:380px;border-bottom:none;border-right:2px solid var(--ink)}
+
+  .final__body{padding:88px var(--gutter) 36px}
+  .final__title{font-size:clamp(120px, 14vw, 180px)}
+}
+
+/* ───────────────────────────────────────────
+   Wide desktop (≥ 1440px)
+   ─────────────────────────────────────────── */
+@media (min-width: 1440px){
+  :root{--gutter:64px}
+  .hero__title{font-size:220px}
+  .final__title{font-size:200px}
+}
+
+/* ───────────────────────────────────────────
+   Reduced motion
+   ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .marquee__track{animation:none;transform:none}
+}
+
+/* ─────── Floating WhatsApp ─────── */
+.fab{
+  position:fixed;right:14px;bottom:14px;z-index:60;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 14px 10px 12px;
+  background:var(--cream);color:var(--ink);text-decoration:none;
+  font-family:var(--display);font-size:16px;letter-spacing:2px;text-transform:uppercase;
+  border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
+  transform:rotate(-2deg);
+  transition:transform .12s ease, box-shadow .12s ease, opacity .25s ease;
+}
+.fab:hover{transform:rotate(-2deg) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.fab:active{transform:rotate(-2deg) translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+.fab__icon{
+  width:28px;height:28px;border-radius:50%;background:var(--red);
+  border:1.5px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;
+  color:var(--cream);flex:0 0 auto;
+}
+.fab__icon svg{width:16px;height:16px;display:block}
+.fab__label{line-height:1;white-space:nowrap}
+.fab__sub{
+  display:block;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;
+  color:var(--red-deep);margin-top:3px;font-weight:400;
+}
+
+/* Hide label on tiny screens — keep just the icon chip */
+@media (max-width: 419px){
+  .fab{padding:8px;gap:0;border-radius:0}
+  .fab__text{display:none}
+  .fab__icon{width:36px;height:36px}
+  .fab__icon svg{width:20px;height:20px}
+}
+
+@media (min-width: 1024px){
+  .fab{right:24px;bottom:24px;padding:12px 18px 12px 14px;font-size:18px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fab{transform:none}
+  .fab:hover,.fab:active{transform:none}
+}
+
+/* Focus */
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ─── Top stripe ─── -->
+<div class="stripe stripe--h stripe--thin" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <span>★ Mowbray · CPT</span>
+    <span class="topbar__wordmark">MANIES</span>
+    <span>Est. '13</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero__kicker">✂ Mowbray's neighbourhood</div>
+
+  <h1 class="hero__title">
+    BARBER<br/>
+    <span class="shadowed">SHOP</span>
+  </h1>
+
+  <div class="tri-rule" aria-hidden="true">
+    <span class="a"></span><span class="b"></span><span class="c"></span>
+  </div>
+
+  <div class="hero__mid">
+    <p class="hero__lede">
+      <b>Cuts, fades, beards &amp; hot-towel shaves</b> — the way they should be done. Walk in, sit down, look sharp.
+    </p>
+    <div class="starburst starburst--tilt" aria-hidden="true">
+      <div class="starburst__inner">FROM<br/>R80</div>
+    </div>
+  </div>
+
+  <!-- Hero photo -->
+  <div class="photocard">
+    <div class="photocard__corner-stripe" aria-hidden="true"></div>
+    <div class="photocard__inner">
+      <img src="assets/manies1.jpg" alt="The chair at Manies, Mowbray" loading="eager" />
+      <span class="photocard__label">The Chair · Mowbray</span>
+    </div>
+    <div class="photocard__stamp">★ 4.5 / 22 ★</div>
+  </div>
+
+  <!-- CTAs -->
+  <div class="cta-row">
+    <a class="btn btn--red" href="https://wa.me/27817220146?text=Hi%20Manies%2C%20I'd%20like%20to%20book%20a%20cut." aria-label="Book on WhatsApp">
+      Book on WhatsApp <span aria-hidden="true">→</span>
+    </a>
+    <a class="btn btn--cream" href="tel:+27817220146" aria-label="Call Manies">Call</a>
+  </div>
+</section>
+
+<!-- ─── Marquee ─── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>★ FADES ★ SCISSOR ★ BEARDS ★ HOT TOWEL ★ KIDS ★ STRAIGHT RAZOR ★ WALK-INS WELCOME ★</span>
+    <span>★ FADES ★ SCISSOR ★ BEARDS ★ HOT TOWEL ★ KIDS ★ STRAIGHT RAZOR ★ WALK-INS WELCOME ★</span>
+  </div>
+</div>
+
+<!-- ─── NO. 01 — THE MENU ─── -->
+<section class="section">
+  <div class="section__hd">
+    <span class="section__no">NO. 01</span>
+    <span class="ln"></span>
+  </div>
+  <h2 class="section__title">The Menu</h2>
+
+  <div class="menu">
+    <div class="menu__head"><span>SERVICE</span><span>TIME / PRICE</span></div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">Scissor Cut</div>
+        <div class="menu__note">Classic shape-up, clean finish.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 100</div>
+        <div class="menu__time">30 min</div>
+      </div>
+    </div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">Blade / Fade Cut</div>
+        <div class="menu__note">Skin fade, taper or drop — your call.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 120</div>
+        <div class="menu__time">40 min</div>
+      </div>
+    </div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">Kids Cut</div>
+        <div class="menu__note">Patient hands, no fuss.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 80</div>
+        <div class="menu__time">20 min</div>
+      </div>
+    </div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">Beard Trim</div>
+        <div class="menu__note">Shape, line-up and condition.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 60</div>
+        <div class="menu__time">15 min</div>
+      </div>
+    </div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">Hot Towel Shave</div>
+        <div class="menu__note">Straight razor, the full ritual.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 90</div>
+        <div class="menu__time">25 min</div>
+      </div>
+    </div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">Eyebrow / Threading</div>
+        <div class="menu__note">Tidy brows and detail work.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 40</div>
+        <div class="menu__time">10 min</div>
+      </div>
+    </div>
+
+    <div class="menu__row">
+      <div>
+        <div class="menu__name">The Full Manie</div>
+        <div class="menu__note">Cut + beard + hot towel + cologne.</div>
+      </div>
+      <div>
+        <div class="menu__price">R 220</div>
+        <div class="menu__time">70 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu__footer">★ Cash &amp; card accepted ★ no card fee ★</div>
+</section>
+
+<!-- ─── NO. 02 — THE TEAM ─── -->
+<section class="section section--blue">
+  <div class="section__hd">
+    <span class="section__no">NO. 02</span>
+    <span class="ln"></span>
+  </div>
+  <h2 class="section__title">The Team</h2>
+
+  <div class="team-grid">
+    <div class="team-hero">
+      <div class="team-hero__meta"><span>No. 01</span><span>★ Master Barber</span></div>
+      <div class="team-hero__name">HAMZA</div>
+      <div class="team-hero__quote">&ldquo;If you can describe it, I can cut it.&rdquo;</div>
+      <div class="team-hero__photo">
+        <img src="assets/manies2.jpg" alt="Hamza, master barber" loading="lazy" />
+      </div>
+      <div class="team-hero__stats">
+        <div><div class="lbl">YEARS</div><div class="num">12</div></div>
+        <div><div class="lbl">CUTS</div><div class="num">14k+</div></div>
+        <div><div class="lbl">REGULARS</div><div class="num">300+</div></div>
+      </div>
+    </div>
+
+    <div class="team-others">
+      <div class="team-card">
+        <div class="team-card__photo">
+          <img src="assets/manies3.jpg" alt="Yusuf, senior barber" loading="lazy" />
+        </div>
+        <div class="team-card__body">
+          <div class="team-card__name">YUSUF</div>
+          <div class="team-card__role">Senior Barber · 7 yrs</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card__photo">
+          <img src="assets/manies4.jpg" alt="Tariq, barber" loading="lazy" />
+        </div>
+        <div class="team-card__body">
+          <div class="team-card__name">TARIQ</div>
+          <div class="team-card__role">Barber · 4 yrs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NO. 03 — THE TALK ─── -->
+<section class="section">
+  <div class="section__hd">
+    <span class="section__no">NO. 03</span>
+    <span class="ln"></span>
+  </div>
+  <h2 class="section__title">The Talk</h2>
+
+  <div class="reviews-grid">
+    <div class="quote-card">
+      <div class="quote-card__mark" aria-hidden="true">&ldquo;</div>
+      <p class="quote-card__text">Hamza is the best barber in Cape Town.</p>
+      <div class="quote-card__attr">
+        <span>— Chezlin, Google reviewer</span>
+        <span>★★★★★</span>
+      </div>
+    </div>
+
+    <div class="clips">
+      <div class="clip">
+        <div class="clip__hd"><span class="clip__author">Jonathan Swanepoel</span><span class="clip__stars">★★★★★</span></div>
+        <p class="clip__text">&ldquo;Magician with the scissors.&rdquo;</p>
+      </div>
+      <div class="clip">
+        <div class="clip__hd"><span class="clip__author">Hennie Coetzer</span><span class="clip__stars">★★★★★</span></div>
+        <p class="clip__text">&ldquo;Been cutting my hair and beard there for almost 2 years. Friendly and very helpful. Always willing to help.&rdquo;</p>
+      </div>
+      <div class="clip">
+        <div class="clip__hd"><span class="clip__author">Mikael Falken</span><span class="clip__stars">★★★★★</span></div>
+        <p class="clip__text">&ldquo;Amazing service. Would highly recommend and amazing haircuts.&rdquo;</p>
+      </div>
+      <div class="clip">
+        <div class="clip__hd"><span class="clip__author">Jason Penrose</span><span class="clip__stars">★★★★★</span></div>
+        <p class="clip__text">&ldquo;Real value and the haircuts are always great.&rdquo;</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-tally">★ ★ ★ <span class="accent">4.5 / 5</span> ★ ★ ★</div>
+</section>
+
+<!-- ─── NO. 04 — COME THRU ─── -->
+<section class="section section--blue">
+  <div class="section__hd">
+    <span class="section__no">NO. 04</span>
+    <span class="ln"></span>
+  </div>
+  <h2 class="section__title">Come Thru</h2>
+
+  <div class="loc-card">
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dNaN!2dNaN!3d-33.94811309999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5dadb1442a37%3A0x404d0eb518a12ea1!2sManies%20Barber%20Shop!5e0!3m2!1sen!2s!4v1778702130841!5m2!1sen!2s"
+        title="Map of Manies Barber Shop, 39 Durban Rd, Mowbray"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="loc-body">
+      <div class="loc-addr">39 DURBAN RD</div>
+      <div class="loc-meta">Mowbray · Cape Town · 7700</div>
+      <div class="hours">
+        <div><div class="k">Mon – Sat</div><div class="v">08:30 – 19:30</div></div>
+        <div><div class="k">Sunday</div><div class="v">09:00 – 16:00</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<div class="final">
+  <div class="stripe stripe--thick" aria-hidden="true"></div>
+  <div class="final__body">
+    <div class="final__kicker">walk in, sit down,</div>
+    <div class="final__title">LOOK<br/>SHARP.</div>
+    <a class="btn btn--ghost" href="https://wa.me/27817220146?text=Hi%20Manies%2C%20I'd%20like%20to%20book%20a%20cut." aria-label="Message Manies on WhatsApp">
+      ★ Message on WhatsApp ★
+    </a>
+    <div class="final__phone">+27 81 722 0146 · +27 61 390 5351</div>
+  </div>
+  <div class="stripe stripe--thick" aria-hidden="true"></div>
+  <div class="footer">
+    <span>© Manies, Mowbray</span>
+    <span>Since '13</span>
+  </div>
+</div>
+
+</main>
+
+<!-- Floating WhatsApp -->
+<a class="fab" href="https://wa.me/27817220146?text=Hi%20Manies%2C%20I'd%20like%20to%20book%20a%20cut." aria-label="Book on WhatsApp">
+  <span class="fab__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.11 4.91A9.86 9.86 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 0 0-2.84-7.02ZM12.04 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.21 8.21 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/>
+    </svg>
+  </span>
+  <span class="fab__text">
+    <span class="fab__label">Book Now</span>
+    <span class="fab__sub">WhatsApp</span>
+  </span>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Design handoff reference (not shipped)
+design_handoff_mannies_brick/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Plan files
+.claude/
