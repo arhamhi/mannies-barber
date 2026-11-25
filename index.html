@@ -1,71 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Manies Barber Shop — Mowbray, Cape Town</title>
 <meta name="description" content="Manies Barber Shop, 39 Durban Rd, Mowbray. Cuts, fades, beards & hot-towel shaves. Walk in, sit down, look sharp. Book on WhatsApp." />
-<meta name="theme-color" content="#c12a26" />
+<meta name="theme-color" content="#F3EAD2" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@300..700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --cream:#f4ead4;
-  --paper:#f7eedb;
-  --red:#c12a26;
-  --red-deep:#8c1f1c;
-  --blue:#1c3a8a;
-  --blue-deep:#142769;
-  --ink:#181410;
-  --gold:#f0c674;
+  --cream:#F3EAD2;
+  --paper:#FBF7EA;
+  --red:#C52624;
+  --red-deep:#C52624;
+  --blue:#213C8C;
+  --blue-deep:#213C8C;
+  --ink:#0A0A0A;
 
-  --display:"Anton","Bebas Neue",Impact,sans-serif;
-  --serif:"Fraunces",Georgia,serif;
-  --body:"Space Grotesk",system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --display:"Barlow Condensed",Impact,sans-serif;
+  --serif:"Libre Baskerville",Georgia,serif;
+  --body:"Inter",system-ui,sans-serif;
+  --mono:"Inter",system-ui,sans-serif;
 
-  --content-max:1280px;
+  --content-max:1440px;
   --gutter:18px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:var(--body)}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-weight:400}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%}
 a{color:inherit}
 
-/* paper grain — subtle multiply over the whole page */
-.grain{
-  position:fixed;inset:0;pointer-events:none;z-index:50;
-  background-image:radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.4px);
-  background-size:3px 3px;mix-blend-mode:multiply;opacity:.45;
-}
-
-/* ─────── Barber-pole stripe band ─────── */
+/* ─────── Barber stripe — small signature ─────── */
 .stripe{
-  height:14px;width:100%;
-  background-image:repeating-linear-gradient(45deg,
-    var(--red) 0 10px,
-    #fff 10px 18px,
-    var(--blue) 18px 28px,
-    #fff 28px 36px);
-}
-.stripe--h{
+  height:10px;width:100%;
   background-image:repeating-linear-gradient(90deg,
-    var(--red) 0 10px,
-    #fff 10px 18px,
-    var(--blue) 18px 28px,
-    #fff 28px 36px);
+    var(--red) 0 20px,
+    var(--cream) 20px 40px,
+    var(--blue) 40px 60px,
+    var(--paper) 60px 80px);
 }
-.stripe--soft{
-  background-image:repeating-linear-gradient(45deg,
-    var(--red) 0 10px,
-    #fff8e8 10px 18px,
-    var(--blue) 18px 28px,
-    #fff8e8 28px 36px);
-}
-.stripe--thick{height:16px}
+.stripe--h{background-image:repeating-linear-gradient(90deg,
+    var(--red) 0 20px,
+    var(--cream) 20px 40px,
+    var(--blue) 40px 60px,
+    var(--paper) 60px 80px)}
+.stripe--soft{background-image:repeating-linear-gradient(90deg,
+    var(--red) 0 20px,
+    var(--cream) 20px 40px,
+    var(--blue) 40px 60px,
+    var(--paper) 60px 80px)}
+.stripe--thick{height:10px}
 .stripe--thin{height:10px}
 
 /* ─────── Header ─────── */
@@ -77,11 +67,15 @@ a{color:inherit}
 .topbar__inner{
   max-width:var(--content-max);margin-inline:auto;
   display:flex;justify-content:space-between;align-items:center;
-  padding:10px var(--gutter);
-  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  padding:16px var(--gutter);
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
 }
 .topbar__wordmark{
-  font-family:var(--display);font-size:22px;letter-spacing:2px;
+  display:block;height:42px;width:auto;flex:0 0 auto;
+  filter:none;outline:none;
+}
+.topbar__wordmark img{
+  display:block;height:42px;width:auto;
 }
 
 /* ─────── Layout containers ─────── */
@@ -91,17 +85,15 @@ main{display:block;position:relative;z-index:1}
 /* ─────── Hero ─────── */
 .hero{padding:22px var(--gutter) 18px;max-width:var(--content-max);margin-inline:auto}
 .hero__kicker{
-  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--red-deep);
+  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--red);
 }
 .hero__title{
-  font-family:var(--display);font-weight:400;
+  font-family:var(--display);font-weight:700;
   font-size:clamp(76px, 30vw, 132px);line-height:.82;letter-spacing:-1px;
-  margin:4px 0 0;color:var(--ink);
+  margin:4px 0 0;color:var(--ink);text-transform:uppercase;
 }
-.hero__title .shadowed{
-  color:var(--red);-webkit-text-stroke:1.5px var(--ink);
-  text-shadow:4px 4px 0 var(--blue);
-  display:inline-block;
+.hero__title .shop{
+  color:var(--red);display:inline-block;
 }
 
 .tri-rule{display:flex;gap:0;margin-top:14px;height:6px}
@@ -142,7 +134,7 @@ main{display:block;position:relative;z-index:1}
 .starburst__inner{
   width:72%;height:72%;border-radius:50%;background:var(--burst-color);
   display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--cream);font-family:var(--display);font-size:17px;line-height:1;
+  color:var(--cream);font-family:var(--display);font-weight:700;font-size:17px;line-height:1;
   padding:8px;transform:rotate(10deg);
 }
 .starburst--tilt{transform:rotate(8deg)}
@@ -150,7 +142,7 @@ main{display:block;position:relative;z-index:1}
 /* Hero photo card */
 .photocard{
   position:relative;margin-top:18px;
-  border:2px solid var(--ink);padding:6px;background:#fff;
+  border:2.5px solid var(--ink);padding:6px;background:var(--paper);
   box-shadow:8px 8px 0 var(--ink);
 }
 .photocard__inner{position:relative;overflow:hidden;background:var(--ink);height:340px}
@@ -164,23 +156,23 @@ main{display:block;position:relative;z-index:1}
   background-size:7px 7px;mix-blend-mode:screen;opacity:.5;
 }
 .photocard__corner-stripe{
-  position:absolute;top:6px;right:6px;width:80px;height:14px;
-  background-image:repeating-linear-gradient(70deg,
+  position:absolute;top:6px;right:6px;width:80px;height:10px;
+  background-image:repeating-linear-gradient(90deg,
     var(--red) 0 10px,
-    #fff 10px 18px,
-    var(--blue) 18px 28px,
-    #fff 28px 36px);
+    var(--cream) 10px 20px,
+    var(--blue) 20px 30px,
+    var(--paper) 30px 40px);
   z-index:2;
 }
 .photocard__label{
   position:absolute;bottom:14px;left:18px;
-  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;
   color:rgba(255,255,255,.7);text-transform:uppercase;z-index:2;
 }
 .photocard__stamp{
   position:absolute;top:-12px;right:-8px;z-index:3;
   background:var(--blue);color:var(--cream);
-  font-family:var(--display);font-size:14px;letter-spacing:2px;
+  font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:1px;
   padding:6px 10px;border:2px solid var(--ink);
   transform:rotate(6deg);
 }
@@ -190,7 +182,7 @@ main{display:block;position:relative;z-index:1}
   margin-top:24px;display:grid;grid-template-columns:1.4fr 1fr;gap:10px;
 }
 .btn{
-  font-family:var(--display);font-size:22px;letter-spacing:2px;
+  font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:1px;
   border:2px solid var(--ink);padding:16px 14px;text-decoration:none;
   display:flex;justify-content:space-between;align-items:center;gap:10px;
   min-height:56px;
@@ -198,8 +190,8 @@ main{display:block;position:relative;z-index:1}
   text-transform:uppercase;
 }
 .btn--red{background:var(--red);color:var(--cream);box-shadow:4px 4px 0 var(--ink)}
-.btn--cream{background:var(--cream);color:var(--ink);box-shadow:4px 4px 0 var(--blue);justify-content:center}
-.btn--ghost{background:#fff;color:var(--ink);box-shadow:5px 5px 0 var(--ink);justify-content:center}
+.btn--cream{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--blue);justify-content:center}
+.btn--ghost{background:var(--paper);color:var(--ink);box-shadow:5px 5px 0 var(--ink);justify-content:center}
 .btn:hover{transform:translate(-2px,-2px)}
 .btn--red:hover{box-shadow:6px 6px 0 var(--ink)}
 .btn--cream:hover{box-shadow:6px 6px 0 var(--blue)}
@@ -214,7 +206,7 @@ main{display:block;position:relative;z-index:1}
 }
 .marquee__track{
   display:flex;gap:22px;white-space:nowrap;
-  font-family:var(--display);font-size:22px;letter-spacing:3px;
+  font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:2px;
   animation:scroll-x 28s linear infinite;
   width:max-content;
 }
@@ -228,39 +220,39 @@ main{display:block;position:relative;z-index:1}
 .section{padding:36px var(--gutter) 0;position:relative;z-index:1;max-width:var(--content-max);margin-inline:auto}
 .section__hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .section__no{
-  font-family:var(--display);font-size:14px;letter-spacing:2px;
+  font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:2px;
   background:var(--red);color:var(--cream);
   padding:4px 10px;border:1.5px solid var(--ink);
 }
 .section--blue .section__no{background:var(--blue)}
 .section__hd .ln{flex:1;height:2px;background:var(--ink)}
 .section__title{
-  font-family:var(--display);font-weight:400;
+  font-family:var(--display);font-weight:700;
   font-size:clamp(54px, 14vw, 70px);line-height:.82;letter-spacing:0;
   margin:0 0 18px;text-transform:uppercase;
 }
 
 /* ─────── Menu (services) ─────── */
 .menu{
-  background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  background:var(--paper);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--blue);
 }
 .menu__head{
   display:flex;justify-content:space-between;
   background:var(--blue);color:var(--cream);
-  padding:8px 14px;font-family:var(--display);font-size:14px;letter-spacing:2px;
+  padding:8px 14px;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:2px;
 }
 .menu__row{
   display:grid;grid-template-columns:1fr auto;
   padding:12px 14px;align-items:baseline;gap:10px;
 }
 .menu__row + .menu__row{border-top:1px dashed var(--ink)}
-.menu__name{font-family:var(--display);font-size:22px;line-height:1;letter-spacing:1px;text-transform:uppercase}
-.menu__note{font-size:11px;color:var(--red-deep);margin-top:4px;font-family:var(--mono);letter-spacing:.5px}
-.menu__price{font-family:var(--display);font-size:22px;color:var(--red);letter-spacing:1px;text-align:right}
-.menu__time{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--ink);text-align:right}
+.menu__name{font-family:var(--display);font-weight:700;font-size:22px;line-height:1;letter-spacing:1px;text-transform:uppercase}
+.menu__note{font-size:12px;color:var(--ink);margin-top:4px;font-family:var(--body);letter-spacing:0;opacity:.72}
+.menu__price{font-family:var(--display);font-weight:700;font-size:22px;color:var(--red);letter-spacing:1px;text-align:right}
+.menu__time{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--ink);text-align:right}
 
 .menu__footer{
-  margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  margin-top:10px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.5px;
   text-transform:uppercase;text-align:right;
 }
 
@@ -272,14 +264,14 @@ main{display:block;position:relative;z-index:1}
 }
 .team-hero__meta{
   display:flex;justify-content:space-between;
-  font-family:var(--mono);font-size:10px;letter-spacing:2px;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:2px;
 }
 .team-hero__name{
-  font-family:var(--display);font-size:clamp(72px, 22vw, 96px);
+  font-family:var(--display);font-weight:700;font-size:clamp(72px, 22vw, 96px);
   letter-spacing:1px;line-height:.85;margin:6px 0 0;
 }
 .team-hero__quote{
-  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold);
+  font-family:var(--serif);font-style:italic;font-size:16px;color:var(--cream);
   margin-top:8px;
 }
 .team-hero__photo{
@@ -296,21 +288,21 @@ main{display:block;position:relative;z-index:1}
 }
 .team-hero__photo::after{
   content:"HAMZA · 12 YRS";position:absolute;bottom:10px;left:12px;
-  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;
   color:rgba(255,255,255,.7);
 }
 .team-hero__stats{
   display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;
-  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
 }
 .team-hero__stats .lbl{opacity:.5}
-.team-hero__stats .num{font-family:var(--display);font-size:22px;letter-spacing:1px}
+.team-hero__stats .num{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:1px}
 
 .team-others{
   margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;
 }
 .team-card{
-  border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);
+  border:2px solid var(--ink);background:var(--paper);box-shadow:4px 4px 0 var(--ink);
 }
 .team-card__photo{
   position:relative;height:130px;background:var(--ink);overflow:hidden;
@@ -322,20 +314,20 @@ main{display:block;position:relative;z-index:1}
   background-size:7px 7px;mix-blend-mode:screen;opacity:.5;
 }
 .team-card__body{padding:10px 12px}
-.team-card__name{font-family:var(--display);font-size:26px;line-height:1;letter-spacing:1px}
+.team-card__name{font-family:var(--display);font-weight:700;font-size:26px;line-height:1;letter-spacing:1px}
 .team-card__role{
-  font-family:var(--mono);font-size:9px;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--red-deep);margin-top:4px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--red);margin-top:4px;
 }
 
 /* ─────── Reviews — newspaper ─────── */
 .quote-card{
-  position:relative;background:#fff;border:2px solid var(--ink);
+  position:relative;background:var(--paper);border:2px solid var(--ink);
   padding:24px 18px 18px;box-shadow:6px 6px 0 var(--blue);
 }
 .quote-card__mark{
   position:absolute;top:-22px;left:14px;
-  font-family:var(--display);font-size:100px;color:var(--red);line-height:1;
+  font-family:var(--serif);font-size:100px;color:var(--red);line-height:1;
 }
 .quote-card__text{
   margin:8px 0 0;font-family:var(--serif);font-style:italic;
@@ -343,29 +335,29 @@ main{display:block;position:relative;z-index:1}
 }
 .quote-card__attr{
   margin-top:14px;display:flex;justify-content:space-between;gap:10px;
-  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
 }
 
 .clips{margin-top:16px;display:grid;gap:10px}
 .clip{
-  background:#fff;border:1.5px solid var(--ink);padding:12px 14px;
+  background:var(--paper);border:1.5px solid var(--ink);padding:12px 14px;
 }
 .clip:nth-child(odd){background:var(--cream);transform:rotate(.6deg)}
 .clip:nth-child(even){transform:rotate(-.4deg)}
 .clip__hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.clip__author{font-family:var(--display);font-size:18px;letter-spacing:1px;text-transform:uppercase}
-.clip__stars{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--red-deep)}
+.clip__author{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:1px;text-transform:uppercase}
+.clip__stars{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--red)}
 .clip__text{margin:6px 0 0;font-size:13px;line-height:1.4}
 
 .reviews-tally{
   margin-top:14px;text-align:center;
-  font-family:var(--display);font-size:18px;letter-spacing:3px;
+  font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:3px;
 }
 .reviews-tally .accent{color:var(--red)}
 
 /* ─────── Location ─────── */
 .loc-card{
-  border:2px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--ink);
+  border:2px solid var(--ink);background:var(--paper);box-shadow:8px 8px 0 var(--ink);
   overflow:hidden;
 }
 .map{
@@ -377,32 +369,32 @@ main{display:block;position:relative;z-index:1}
   filter:grayscale(.4) contrast(1.05);
 }
 .loc-body{padding:14px 14px 18px}
-.loc-addr{font-family:var(--display);font-size:34px;letter-spacing:1px;line-height:1}
-.loc-meta{font-family:var(--mono);font-size:11px;letter-spacing:2px;margin-top:4px;text-transform:uppercase}
+.loc-addr{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:1px;line-height:1}
+.loc-meta{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:2px;margin-top:4px;text-transform:uppercase}
 .hours{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .hours > div{border:1px solid var(--ink);padding:8px}
-.hours .k{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
-.hours .v{font-family:var(--display);font-size:18px;letter-spacing:1px;margin-top:2px}
+.hours .k{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase}
+.hours .v{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:1px;margin-top:2px}
 
 /* ─────── Final CTA ─────── */
 .final{margin-top:32px}
 .final__body{
-  background:var(--red);color:var(--cream);
+  background:var(--blue);color:var(--cream);
   padding:32px var(--gutter) 14px;text-align:center;
 }
 .final__kicker{font-family:var(--serif);font-style:italic;font-size:18px}
 .final__title{
-  font-family:var(--display);font-size:clamp(64px, 22vw, 110px);
-  line-height:.85;letter-spacing:1px;margin:4px 0 18px;
+  font-family:var(--display);font-weight:700;font-size:clamp(64px, 22vw, 110px);
+  line-height:.85;letter-spacing:1px;margin:4px 0 18px;text-transform:uppercase;
 }
-.final__phone{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:1.5px}
+.final__phone{margin-top:14px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:1.5px}
 .final .btn--ghost{display:block;max-width:560px;margin:4px auto 0}
 
 .footer{
   background:var(--ink);color:var(--cream);
   padding:14px var(--gutter);
   display:flex;justify-content:space-between;gap:12px;
-  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
 }
 
 /* ───────────────────────────────────────────
@@ -411,7 +403,7 @@ main{display:block;position:relative;z-index:1}
 @media (min-width: 720px){
   :root{--gutter:32px}
 
-  .topbar__wordmark{font-size:28px;letter-spacing:4px}
+  .topbar__wordmark,.topbar__wordmark img{height:44px}
 
   .hero__title{font-size:clamp(120px, 18vw, 180px)}
   .hero__lede{font-size:16px;max-width:480px}
@@ -444,7 +436,7 @@ main{display:block;position:relative;z-index:1}
   :root{--gutter:48px}
 
   .topbar__inner{padding:14px var(--gutter)}
-  .topbar__wordmark{font-size:32px;letter-spacing:6px}
+  .topbar__wordmark,.topbar__wordmark img{height:48px}
 
   /* HERO: two-column grid */
   .hero{
@@ -522,8 +514,8 @@ main{display:block;position:relative;z-index:1}
   position:fixed;right:14px;bottom:14px;z-index:60;
   display:inline-flex;align-items:center;gap:10px;
   padding:10px 14px 10px 12px;
-  background:var(--cream);color:var(--ink);text-decoration:none;
-  font-family:var(--display);font-size:16px;letter-spacing:2px;text-transform:uppercase;
+  background:var(--paper);color:var(--ink);text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:1px;text-transform:uppercase;
   border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
   transform:rotate(-2deg);
   transition:transform .12s ease, box-shadow .12s ease, opacity .25s ease;
@@ -538,12 +530,14 @@ main{display:block;position:relative;z-index:1}
 .fab__icon svg{width:16px;height:16px;display:block}
 .fab__label{line-height:1;white-space:nowrap}
 .fab__sub{
-  display:block;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;
-  color:var(--red-deep);margin-top:3px;font-weight:400;
+  display:block;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;
+  color:var(--red);margin-top:3px;font-weight:500;
 }
 
 /* Hide label on tiny screens — keep just the icon chip */
 @media (max-width: 419px){
+  .topbar__inner{font-size:9px;letter-spacing:1px;padding:12px var(--gutter)}
+  .topbar__wordmark,.topbar__wordmark img{height:28px}
   .fab{padding:8px;gap:0;border-radius:0}
   .fab__text{display:none}
   .fab__icon{width:36px;height:36px}
@@ -565,15 +559,15 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-
 <!-- ─── Top stripe ─── -->
 <div class="stripe stripe--h stripe--thin" aria-hidden="true"></div>
 
 <header class="topbar">
   <div class="topbar__inner">
     <span>★ Mowbray · CPT</span>
-    <span class="topbar__wordmark">MANIES</span>
+    <a class="topbar__wordmark" href="#top" aria-label="Manies Barbershop, Mowbray">
+      <img src="assets/logo-manies.svg" alt="Manies" width="135" height="42" />
+    </a>
     <span>Est. '13</span>
   </div>
 </header>
@@ -586,7 +580,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 
   <h1 class="hero__title">
     BARBER<br/>
-    <span class="shadowed">SHOP</span>
+    <span class="shop">SHOP</span>
   </h1>
 
   <div class="tri-rule" aria-hidden="true">
